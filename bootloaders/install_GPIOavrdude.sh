@@ -1,0 +1,43 @@
+#!/bin/sh
+echo "Install GPIO AVRDUDE"
+echo ""
+
+avrdude_path=~/Applications/arduino/hardware/tools/avr/bin
+
+if [ -e $avrdude_path/avrdude.org ]; then
+  echo "found: $avrdude_path/avrdude.org"
+  echo "Already GPIO-AVRDUDE is installed."
+  exit 0
+fi
+
+if [ ! -e $avrdude_path/avrdude ]; then
+  echo "not found: $avrdude_path/avrdude"
+  echo "Abort setup"
+  exit 1
+fi
+
+  echo "sudo apt-get -y install avrdude"
+  sudo apt-get -y install avrdude
+  sudo chown root:root /usr/bin/avrdude
+  sudo chmod +s /usr/bin/avrdude
+
+  sudo chmod 666 /etc/avrdude.conf
+  echo 'programmer' >> /etc/avrdude.conf
+  echo '  id    = "linuxgpio";' >> /etc/avrdude.conf
+  echo '  desc  = "Use the Linux sysfs interface to bitbang GPIO lines";' >> /etc/avrdude.conf
+  echo '  type  = "linuxgpio";' >> /etc/avrdude.conf
+  echo '  mosi  = 18;' >> /etc/avrdude.conf
+  echo '  miso  = 23;' >> /etc/avrdude.conf
+  echo '  sck   = 24;' >> /etc/avrdude.conf
+  echo '  reset = 25;' >> /etc/avrdude.conf
+  echo ';' >> /etc/avrdude.conf
+  sudo chmod 644 /etc/avrdude.conf
+
+  cd ~/Applications/arduino/hardware/tools/avr/bin/
+  sudo mv avrdude avrdude.org
+  sudo ln -s /usr/bin/avrdude ./avrdude
+  cd ../etc/
+  sudo mv avrdude.conf avrdude.conf.org
+  sudo ln -s /etc/avrdude.conf ./avrdude.conf
+  cd
+  echo "done"

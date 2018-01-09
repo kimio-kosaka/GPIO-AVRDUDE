@@ -1,0 +1,41 @@
+####################################################
+runscript.name=Install GPIO AVRDUDE
+runscript.bootloader.file=install_GPIOavrdude.sh
+### dummy setting#####################
+runscript.upload.tool=arduino:avrdude
+runscript.upload.protocol=arduino
+runscript.upload.maximum_size=30720
+runscript.upload.maximum_data_size=2048
+runscript.upload.speed=57600
+runscript.bootloader.tool=arduino:avrdude
+runscript.bootloader.low_fuses=0xE2
+runscript.bootloader.high_fuses=0xDA
+runscript.bootloader.extended_fuses=0xFD
+runscript.bootloader.unlock_bits=0x3F
+runscript.bootloader.lock_bits=0x0F
+runscript.build.mcu=atmega328p
+runscript.build.f_cpu=8000000L
+runscript.build.board=AVR_runscript
+runscript.build.core=arduino:arduino
+runscript.build.variant=arduino:eightanaloginputs
+
+#####################################################
+runscript_2.name=Restore Arduino IDE AVRDUDE
+runscript_2.bootloader.file=restore_IDEavrdude.sh
+### dummy setting#####################
+runscript_2.upload.tool=arduino:avrdude
+runscript_2.upload.protocol=arduino
+runscript_2.upload.maximum_size=30720
+runscript_2.upload.maximum_data_size=2048
+runscript_2.upload.speed=57600
+runscript_2.bootloader.tool=arduino:avrdude
+runscript_2.bootloader.low_fuses=0xE2
+runscript_2.bootloader.high_fuses=0xDA
+runscript_2.bootloader.extended_fuses=0xFD
+runscript_2.bootloader.unlock_bits=0x3F
+runscript_2.bootloader.lock_bits=0x0F
+runscript_2.build.mcu=atmega328p
+runscript_2.build.f_cpu=8000000L
+runscript_2.build.board=AVR_runscript_2
+runscript_2.build.core=arduino:arduino
+runscript_2.build.variant=arduino:eightanaloginputs
