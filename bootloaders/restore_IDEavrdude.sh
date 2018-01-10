@@ -3,6 +3,12 @@ echo "Restore Arduio IDE AVRDUDE"
 echo ""
 avrdude_path=~/Applications/arduino/hardware/tools/avr/bin
 
+if [ ! -e $avrdude_path ]; then
+ echo not found: $avrdude_path
+ echo "Abort restore"
+ exit 1
+fi
+
 if [ ! -e $avrdude_path/avrdude.org ]; then
  echo "GPIO-AVRDUDE is not Installed"
  echo "Already you are using Arduino IDE AVRDUDE"
