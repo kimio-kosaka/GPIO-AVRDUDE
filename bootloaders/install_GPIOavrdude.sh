@@ -12,7 +12,7 @@ fi
 
 if [ ! -e $avrdude_path/avrdude ]; then
   echo "not found: $avrdude_path/avrdude"
-  echo "Abort setup"
+  echo "Abort install"
   exit 1
 fi
 
