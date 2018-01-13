@@ -20,6 +20,13 @@ else
  cd ../etc
  sudo rm avrdude.conf
  sudo mv avrdude.conf.org avrdude.conf
+#
+ cd ~/Applications/arduino/hardware/arduino/avr/
+ if [ -e boards.txt.org ]; then
+   mv boards.txt boards.txt.new
+   mv boards.txt.org boards.txt
+ fi 
+#
  echo "sudo apt-get -y purge avrdude"
  sudo apt-get -y purge avrdude
  if [ -e /etc/avrdude.conf ]; then

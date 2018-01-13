@@ -39,5 +39,11 @@ fi
   cd ../etc/
   sudo mv avrdude.conf avrdude.conf.org
   sudo ln -s /etc/avrdude.conf ./avrdude.conf
+  cd ~/Applications/arduino/hardware/arduino/avr/
+  sed -e 's/bootloader.unlock_bits=0x3F/bootloader.unlock_bits=0xFF/g' boards.txt |\
+  sed 's/bootloader.lock_bits=0x0F/bootloader.lock_bits=0xCF/g' |\
+  sed 's/bootloader.lock_bits=0x2F/bootloader.lock_bits=0xEF/g' >boards.txt.new
+  mv boards.txt boards.txt.org
+  mv boards.txt.new boards.txt 
   cd
   echo "done"
